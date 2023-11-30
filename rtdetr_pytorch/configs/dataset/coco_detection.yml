@@ -1,0 +1,34 @@
+task: detection
+
+num_classes: 3
+remap_mscoco_category: True
+
+train_dataloader: 
+  type: DataLoader
+  dataset: 
+    type: CocoDetection
+    img_folder: D://RT-DETR//RT-DETR-main//rtdetr_pytorch//configs//dataset//VOC2007//train2017//
+    ann_file: D://RT-DETR//RT-DETR-main//rtdetr_pytorch//configs//dataset//VOC2007//annotations//instances_train2017.json
+    transforms:
+      type: Compose
+      ops: ~
+  shuffle: True
+  batch_size: 8
+  num_workers: 4
+  drop_last: True 
+
+
+val_dataloader:
+  type: DataLoader
+  dataset: 
+    type: CocoDetection
+    img_folder: D://RT-DETR//RT-DETR-main//rtdetr_pytorch//configs//dataset//VOC2007//val2017//
+    ann_file: D://RT-DETR//RT-DETR-main//rtdetr_pytorch//configs//dataset//VOC2007//annotations//instances_val2017.json
+    transforms:
+      type: Compose
+      ops: ~ 
+
+  shuffle: False
+  batch_size: 8
+  num_workers: 4
+  drop_last: False
